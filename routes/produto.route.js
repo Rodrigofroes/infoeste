@@ -6,7 +6,6 @@ const router = express.Router();
 let ctrl = new ProdutoController();
 
 router.get("/", (req, res) => {
-
     // #swagger.tags = ['Produto'']
     // #swagger.summary = 'Endpoint para retornar todos os produtos'
     ctrl.listar(req, res);
