@@ -14,14 +14,6 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => [
     //#swagger.tags = ['Produto']
     //#swagger.summary = 'Cadastra um produto'
-    /*  #swagger.requestBody = {
-            required: true,
-            content: {
-                "application/json": {
-                }
-            }
-        } 
-    */
     ctrl.gravar(req, res)
 ]);
 
@@ -40,15 +32,6 @@ router.get("/:id", (req, res) => {
 router.put("/", (req, res) => {
     //#swagger.tags = ['Produto']
     //#swagger.summary = 'Altera um produto'
-    /*  #swagger.requestBody = {
-            required: true,
-            content: {
-                "application/json": {
-
-                }
-            }
-        } 
-    */
     ctrl.alterar(req, res);
 });
 
@@ -58,15 +41,7 @@ router.patch("/", (req, res) => {
     }] */
     //#swagger.tags = ['Produto'']
     //#swagger.summary = 'Realiza a alteração parcial do produto'
-    /*  #swagger.requestBody = {
-        required: true,
-        content: {
-            "application/json": {
- 
-            }
-        }
-    } 
-*/
+    
     ctrl.alterarParcialmente(req, res);
 });
 

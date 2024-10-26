@@ -186,7 +186,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoController"
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "estoque": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
@@ -213,11 +224,24 @@
           }
         },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity.js"
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "example": "any"
+                  },
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "estoque": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
@@ -243,11 +267,24 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoRepository.js"
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "example": "any"
+                  },
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "estoque": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
