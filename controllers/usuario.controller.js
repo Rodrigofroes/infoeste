@@ -43,6 +43,13 @@ export default class UsuarioController {
             if (id && nome && email && idade) {
                 let usuarioEntity = new UsuarioEntity(id, nome, email, idade);
                 let usuarioRepository = new UsuarioRepository();
+
+                let usuarioExiste = await usuarioRepository.obterPorId(usuarioEntity);
+                if (!usuarioExiste) {
+                    res.status(404).json({ message: 'Usuário não encontrado' });
+                    return;
+                }
+
                 let atualizar = usuarioRepository.atualizar(usuarioEntity);
                 if (atualizar) {
                     res.status(200).json({ message: 'Registro atualizado com sucesso' });
@@ -82,6 +89,13 @@ export default class UsuarioController {
             let { id } = req.params;
             if (id) {
                 let usuarioRepository = new UsuarioRepository();
+
+                let usuarioExiste = await usuarioRepository.obterPorId(id);
+                if (!usuarioExiste) {
+                    res.status(404).json({ message: 'Usuário não encontrado' });
+                    return;
+                }
+
                 let deletar = usuarioRepository.deletar(id);
                 if (deletar) {
                     res.status(200).json({ message: 'Registro deletado com sucesso' });

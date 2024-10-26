@@ -18,7 +18,7 @@ export default class UsuarioRepository extends BaseRepository {
         let sql = "SELECT * FROM tb_usuario WHERE usu_id = ?";
         let consulta = await this.db.ExecutaComando(sql, [usuario.id]);
         
-        return this.toMAP(consulta[0]);
+        return this.toMAP(consulta);
     }
 
     async inserir(usuario) {

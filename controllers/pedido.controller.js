@@ -34,14 +34,10 @@ export default class PedidoController {
                 let produtoRepository = new ProdutoRepository();
 
                 let usuarioExiste = await usuarioRepository.obterPorId(usuarioEntity);
-                if (!usuarioExiste) {
-                    res.status(404).json({ message: 'Usuário não encontrado' });
-                    return;
-                }
-
                 let produtoExiste = await produtoRepository.obter(produto);
-                if (!produtoExiste) {
-                    res.status(404).json({ message: 'Produto não encontrado' });
+
+                if (usuarioExiste.length == 0 || produtoExiste.length == 0) {
+                    res.status(404).json({ message: 'Usuário ou Produto não encontrado' });
                     return;
                 }
 
@@ -65,6 +61,21 @@ export default class PedidoController {
             if (id && usuario && produto && quantidade) {
                 let pedidoEntity = new PedidoEntity(id, usuario, produto, quantidade);
                 let pedidoRepository = new PedidoRepository();
+
+                let usuarioEntity = new UsuarioEntity(usuario, "", "", "");
+                let usuarioRepository = new UsuarioRepository();
+
+                let produtoRepository = new ProdutoRepository();
+
+                let usuarioExiste = await usuarioRepository.obterPorId(usuarioEntity);
+                let produtoExiste = await produtoRepository.obter(produto);
+
+                if (usuarioExiste.length == 0 || produtoExiste.length == 0) {
+                    res.status(404).json({ message: 'Usuário ou Produto não encontrado' });
+                    return;
+                }
+
+
                 let atualizar = await pedidoRepository.atualizar(pedidoEntity);
                 if (atualizar) {
                     res.status(200).json({ message: 'Registro atualizado com sucesso' });
@@ -85,6 +96,14 @@ export default class PedidoController {
             if (id) {
                 let pedidoEntity = new PedidoEntity(id, "", "", "");
                 let pedidoRepository = new PedidoRepository();
+
+                let pedidoExiste = await pedidoRepository.obterPorId(pedidoEntity);
+
+                if (!pedidoExiste) {
+                    res.status(404).json({ message: 'Pedido não encontrado' });
+                    return;
+                }
+
                 let deletar = await pedidoRepository.deletar(pedidoEntity);
                 if (deletar) {
                     res.status(200).json({ message: 'Registro deletado com sucesso' });
