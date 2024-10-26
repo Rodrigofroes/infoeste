@@ -55,6 +55,8 @@ export default class UsuarioRepository extends BaseRepository {
 
                 lista.push(usuario);
             }
+            return lista;
+
         } else {
             let usuario = new UsuarioEntity();
             usuario.id = rows['usu_id'];
@@ -64,7 +66,6 @@ export default class UsuarioRepository extends BaseRepository {
 
             return usuario;
         }
-
     }
 
 

@@ -1,22 +1,22 @@
-CREATE TABLE usuario (
-    usu_id INT PRIMARY KEY,
+CREATE TABLE tb_usuario (
+    usu_id INT PRIMARY KEY AUTO_INCREMENT,
     usu_nome VARCHAR(100),
     usu_email VARCHAR(100),
     usu_idade INT
 );
 
-CREATE TABLE produto (
+CREATE TABLE tb_produto (
     pro_id INT PRIMARY KEY,
     pro_nome VARCHAR(100),
     pro_descricao varchar(255),
     pro_estoque INT
 );
 
-CREATE TABLE pedido (
+CREATE TABLE tb_pedido (
     ped_id INT PRIMARY KEY,
     usu_id INT,
     pro_id INT,
     quantidade INT,
-    FOREIGN KEY (usu_id) REFERENCES usuario(usu_id),
-    FOREIGN KEY (pro_id) REFERENCES produto(pro_id)
+    FOREIGN KEY (usu_id) REFERENCES tb_usuario(usu_id),
+    FOREIGN KEY (pro_id) REFERENCES tb_produto(pro_id)
 );
