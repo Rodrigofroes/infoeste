@@ -13,6 +13,10 @@
   "paths": {
     "/usuario/": {
       "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "código para listar todos os usuários",
         "description": "",
         "responses": {
           "200": {
@@ -27,6 +31,10 @@
         }
       },
       "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Endpoint para adicionar um novo usuário",
         "description": "",
         "responses": {
           "201": {
@@ -64,6 +72,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Endpoint para atualizar um usuário",
         "description": "",
         "responses": {
           "200": {
@@ -106,6 +118,10 @@
     },
     "/usuario/{id}": {
       "delete": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Endpoint para deletar um usuário",
         "description": "",
         "parameters": [
           {
@@ -129,20 +145,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -181,7 +183,6 @@
           }
         },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {

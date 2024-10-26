@@ -59,7 +59,7 @@ export default class UsuarioController {
 
     async deletar(req, res) {
         try {
-            let { id } = req.body;
+            let { id } = req.params;
             if (id) {
                 let usuarioRepository = new UsuarioRepository();
                 let deletar = usuarioRepository.deletar(id);
