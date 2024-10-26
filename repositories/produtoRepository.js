@@ -1,5 +1,5 @@
-import BaseRepository from "./baseRepository";
-import ProdutoEntity from "../entities/produtoEntity";
+import BaseRepository from "./baseRepository.js";
+import ProdutoEntity from "../entities/produtoEntity.js";
 
 export default class ProdutoRepository extends BaseRepository {
 
