@@ -57,6 +57,26 @@ export default class UsuarioController {
         }
     }
 
+    async obter(req, res) {
+        try {
+            let { id } = req.params;
+            if (id) {
+                let usuarioEntity = new UsuarioEntity(id, "", "", "");
+                let usuarioRepository = new UsuarioRepository();
+                let usuario = await usuarioRepository.obterPorId(usuarioEntity);
+                if (usuario) {
+                    res.status(200).json(usuario);
+                } else {
+                    res.status(404).json({ message: 'Nenhum registro encontrado' });
+                }
+            } else {
+                res.status(400).json({ message: 'Dados inválidos' });
+            }
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
     async deletar(req, res) {
         try {
             let { id } = req.params;

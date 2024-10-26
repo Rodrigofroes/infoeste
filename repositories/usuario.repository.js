@@ -14,11 +14,11 @@ export default class UsuarioRepository extends BaseRepository {
         return this.toMAP(consulta);
     }
 
-    async obterPorId(id) {
+    async obterPorId(usuario) {
         let sql = "SELECT * FROM tb_usuario WHERE usu_id = ?";
-        let consulta = await this.db.ExecutaComando(sql, [id]);
+        let consulta = await this.db.ExecutaComando(sql, [usuario.id]);
         
-        return this.toMAP(consulta);
+        return this.toMAP(consulta[0]);
     }
 
     async inserir(usuario) {

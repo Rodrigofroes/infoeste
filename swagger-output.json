@@ -117,6 +117,37 @@
       }
     },
     "/usuario/{id}": {
+      "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Endpoint para obter um usuário por id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Usuário"
@@ -183,21 +214,11 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "nome": {
-                    "example": "any"
-                  },
-                  "descricao": {
-                    "example": "any"
-                  },
-                  "estoque": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/produtoEntity"
               }
             }
           }
