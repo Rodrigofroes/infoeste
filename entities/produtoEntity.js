@@ -1,6 +1,5 @@
 import BaseEntity from "./baseEntity.js";
 
-
 export default class ProdutoEntity extends BaseEntity {
 
     #proId;

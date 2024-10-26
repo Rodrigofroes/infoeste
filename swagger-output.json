@@ -147,7 +147,7 @@
         }
       }
     },
-    "./produto/": {
+    "/produto/": {
       "get": {
         "tags": [
           "Produto"
@@ -185,7 +185,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity"
+                "$ref": "#/components/schemas/produtoController"
               }
             }
           }
@@ -216,7 +216,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity"
+                "$ref": "#/components/schemas/produtoEntity.js"
               }
             }
           }
@@ -246,14 +246,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity"
+                "$ref": "#/components/schemas/produtoRepository.js"
               }
             }
           }
         }
       }
     },
-    "./produto/{id}": {
+    "/produto/{id}": {
       "delete": {
         "tags": [
           "Produto"
