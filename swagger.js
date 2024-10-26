@@ -5,7 +5,7 @@ const doc = {
         title: "API - Curso",
         description: "API criada utilizando o padrão REST"
     },
-    host: 'localhost:5000',
+    host: 'localhost:3000',
 }
 
 const outputJson = "./swagger-output.json";
