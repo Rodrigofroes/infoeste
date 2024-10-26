@@ -19,7 +19,7 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(outputJson));
 
 //rotas
 app.use('/usuario', usuarioRoute);
-app.use('./produto', produtoRoute);
+app.use('/produto', produtoRoute);
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

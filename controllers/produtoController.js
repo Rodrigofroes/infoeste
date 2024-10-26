@@ -29,7 +29,6 @@ export default class produtoController {
     }
 
     async gravar(req, res) {
-
         try {
             let { nome, descricao, estoque } = req.body;
             if (nome && descricao && estoque) {

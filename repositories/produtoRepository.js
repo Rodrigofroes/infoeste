@@ -9,22 +9,8 @@ export default class ProdutoRepository extends BaseRepository {
 
     async listar() {
         let sql = "select * from tb_produto";
-        let rows = await this.db.ExecutaComandoNonQuery(sql);
+        let rows = await this.db.ExecutaComando(sql);
         return this.toMap(rows);
-    }
-
-    async deletar(id) {
-        let sql = "delete from tb_produto where pro_id = ?";
-        let valores = [id];
-        let result = await this.db.executaComando(sql, valores);
-        return result;
-    }
-
-    async gravar(entidade) {
-        let sql = "create from tb_produto (pro_nome, pro_descricao, pro_estoque) values (?, ?, ?)";
-        let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque];
-        let result = await this.db.executaComando(sql, valores);
-        return result;
     }
 
     async obter(id) {
@@ -34,10 +20,28 @@ export default class ProdutoRepository extends BaseRepository {
         return this.toMap(row[0]);
     }
 
+
+    async deletar(id) {
+        let sql = "delete from tb_produto where pro_id = ?";
+        let valores = [id];
+        let result = await this.db.ExecutaComandoNonQuery(sql, valores);
+        return result;
+    }
+
+
+    async gravar(entidade) {
+        let sql = "insert into tb_produto (pro_nome, pro_descricao, pro_estoque) values (?, ?, ?)";
+        let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque];
+        let result = await this.db.ExecutaComandoNonQuery(sql, valores);
+        return result;
+    }
+
+
+
     async alterar(entidade) {
         let sql = "update tb_produto set pro_nome = ?, pro_descricao = ?, pro_estoque = ? where pro_id = ?";
         let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque, entidade.proId];
-        let result = await this.db.executaComando(sql, valores);
+        let result = await this.db.ExecutaComandoNonQuery(sql, valores);
         return result;
     }
 
@@ -47,7 +51,7 @@ export default class ProdutoRepository extends BaseRepository {
                                          pro_estoque = colapse(?, pro_estoque) 
                                          where pro_id = ?`;
         let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque, entidade.proId];
-        let result = await this.db.executaComando(sql, valores);
+        let result = await this.db.ExecutaComandoNonQuery(sql, valores);
         return result;
     }
 
@@ -68,10 +72,10 @@ export default class ProdutoRepository extends BaseRepository {
         }
         else if (rows) {
             let produto = new ProdutoEntity();
-            produto.id = row["pro_id"];
-            produto.nome = row["pro_nome"];
-            produto.descricao = row["pro_descricao"];
-            produto.estoque = row["pro_estoque"];
+            produto.id = rows["pro_id"];
+            produto.nome = rows["pro_nome"];
+            produto.descricao = rows["pro_descricao"];
+            produto.estoque = rows["pro_estoque"];
             return produto;
         }
         else {

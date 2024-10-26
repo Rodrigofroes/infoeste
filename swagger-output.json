@@ -180,7 +180,7 @@
         }
       }
     },
-    "./produto/": {
+    "/produto/": {
       "get": {
         "tags": [
           "Produto"
@@ -245,11 +245,24 @@
           }
         },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity"
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "example": "any"
+                  },
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "estoque": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
@@ -275,18 +288,31 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/produtoEntity"
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "example": "any"
+                  },
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "estoque": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
         }
       }
     },
-    "./produto/{id}": {
+    "/produto/{id}": {
       "delete": {
         "tags": [
           "Produto"
