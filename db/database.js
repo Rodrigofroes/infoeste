@@ -10,7 +10,7 @@ export default class Database {
 
         this.#conexao = mysql.createPool({
             host: '132.226.245.178', 
-            database: 'PFS2_10442313038', 
+            database: 'ATIVIDADE10_10442313038', 
             user: '10442313038', 
             password: '10442313038',
         });
