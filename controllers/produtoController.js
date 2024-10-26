@@ -5,7 +5,7 @@ export default class produtoController {
 
     async listar(req, res) {
         try {
-            let produto = ProdutoRepository();
+            let produto = new ProdutoRepository();
             let lista = await produto.listar();
             res.status(200).json(lista);
         } catch (ex) {
@@ -36,6 +36,7 @@ export default class produtoController {
                 let entidade = new ProdutoEntity(0, nome, descricao, estoque);
 
                 let repo = new ProdutoRepository();
+
                 let result = await repo.gravar(entidade);
 
                 if (result)
@@ -110,7 +111,7 @@ export default class produtoController {
                 let produtoEntidade = new ProdutoEntity(id, nome, descricao, estoque);
                 let produtoRepo = new ProdutoRepository();
                 
-                let result = await produtoRepo.alteracaoParcial(produtoEntidade);
+                let result = await produtoRepo.alterarParcialmente(produtoEntidade);
 
                 if (result == false)
                     throw new Error("Erro ao executar a atualização no banco de dados")

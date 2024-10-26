@@ -14,12 +14,11 @@ export default class ProdutoRepository extends BaseRepository {
     }
 
     async obter(id) {
-        let sql = "select * from tb_produto where pro_id";
+        let sql = "select * from tb_produto where pro_id = ?";
         let valores = [id];
-        let row = await this.db.executaComando(sql, valores);
+        let row = await this.db.ExecutaComando(sql, valores);
         return this.toMap(row[0]);
     }
-
 
     async deletar(id) {
         let sql = "delete from tb_produto where pro_id = ?";
@@ -28,15 +27,15 @@ export default class ProdutoRepository extends BaseRepository {
         return result;
     }
 
-
     async gravar(entidade) {
         let sql = "insert into tb_produto (pro_nome, pro_descricao, pro_estoque) values (?, ?, ?)";
+
         let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque];
+
         let result = await this.db.ExecutaComandoNonQuery(sql, valores);
+
         return result;
     }
-
-
 
     async alterar(entidade) {
         let sql = "update tb_produto set pro_nome = ?, pro_descricao = ?, pro_estoque = ? where pro_id = ?";
@@ -46,9 +45,9 @@ export default class ProdutoRepository extends BaseRepository {
     }
 
     async alterarParcialmente(entidade) {
-        let sql = `update tb_produto set pro_nome = colapse(?, pro_nome),
-                                         pro_descricao = colapse(?, pro_descricao),
-                                         pro_estoque = colapse(?, pro_estoque) 
+        let sql = `update tb_produto set pro_nome = coalesce(?, pro_nome),
+                                         pro_descricao = coalesce(?, pro_descricao),
+                                         pro_estoque = coalesce(?, pro_estoque) 
                                          where pro_id = ?`;
         let valores = [entidade.proNome, entidade.proDescricao, entidade.proEstoque, entidade.proId];
         let result = await this.db.ExecutaComandoNonQuery(sql, valores);
