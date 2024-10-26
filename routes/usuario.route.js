@@ -16,6 +16,12 @@ router.post('/', (req, res) => {
     controller.gravar(req, res);
 });
 
+router.get('/:id', (req, res) => {
+    // #swagger.tags = ['Usuário']
+    // #swagger.summary = 'Endpoint para obter um usuário por id'
+    controller.obter(req, res);
+})
+
 router.put('/', (req, res) => {
     // #swagger.tags = ['Usuário']
     // #swagger.summary = 'Endpoint para atualizar um usuário'
