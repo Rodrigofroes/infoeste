@@ -1,10 +1,14 @@
-export default class UsuarioEntity {
+import BaseEntity from "./baseEntity.js";
+
+export default class UsuarioEntity extends BaseEntity {
+
     #id;
     #nome;
     #email;
     #idade;
 
     constructor(id, nome, email, idade) {
+        super();
         this.#id = id;
         this.#nome = nome;
         this.#email = email;
@@ -27,12 +31,19 @@ export default class UsuarioEntity {
         return this.#idade;
     }
 
-    toJSON() {
-        return {
-            id: this.#id,
-            nome: this.#nome,
-            email: this.#email,
-            idade: this.#idade
-        }
+    set id(id) {
+        this.#id = id;
+    }
+
+    set nome(nome) {
+        this.#nome = nome;
+    }
+
+    set email(email) {
+        this.#email = email;
+    }
+
+    set idade(idade) {
+        this.#idade = idade;
     }
 }
