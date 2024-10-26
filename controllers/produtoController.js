@@ -1,5 +1,5 @@
-import ProdutoRepository from "../repositories/produtoRepository";
-import ProdutoEntity from "../entities/produtoEntity";
+import ProdutoRepository from "../repositories/produtoRepository.js";
+import ProdutoEntity from "../entities/produtoEntity.js";
 
 export default class produtoController {
 
