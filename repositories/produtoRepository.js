@@ -60,10 +60,10 @@ export default class ProdutoRepository extends BaseRepository {
             for (let i = 0; i < rows.length; i++) {
                 let row = rows[i];
                 let produto = new ProdutoEntity();
-                produto.id = row["pro_id"];
-                produto.nome = row["pro_nome"];
-                produto.descricao = row["pro_descricao"];
-                produto.estoque = row["pro_estoque"];
+                produto.proId = row["pro_id"];
+                produto.proNome = row["pro_nome"];
+                produto.proDescricao = row["pro_descricao"];
+                produto.proEstoque = row["pro_estoque"];
 
                 lista.push(produto);
             }
@@ -71,10 +71,10 @@ export default class ProdutoRepository extends BaseRepository {
         }
         else if (rows) {
             let produto = new ProdutoEntity();
-            produto.id = rows["pro_id"];
-            produto.nome = rows["pro_nome"];
-            produto.descricao = rows["pro_descricao"];
-            produto.estoque = rows["pro_estoque"];
+            produto.proId = rows["pro_id"];
+            produto.proNome = rows["pro_nome"];
+            produto.proDescricao = rows["pro_descricao"];
+            produto.proEstoque = rows["pro_estoque"];
             return produto;
         }
         else {
