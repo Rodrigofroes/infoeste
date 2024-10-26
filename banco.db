@@ -1,0 +1,22 @@
+CREATE TABLE usuario (
+    usu_id INT PRIMARY KEY,
+    usu_nome VARCHAR(100),
+    usu_email VARCHAR(100),
+    usu_idade INT
+);
+
+CREATE TABLE produto (
+    pro_id INT PRIMARY KEY,
+    pro_nome VARCHAR(100),
+    pro_descricao varchar(255),
+    pro_estoque INT
+);
+
+CREATE TABLE pedido (
+    ped_id INT PRIMARY KEY,
+    usu_id INT,
+    pro_id INT,
+    quantidade INT,
+    FOREIGN KEY (usu_id) REFERENCES usuario(usu_id),
+    FOREIGN KEY (pro_id) REFERENCES produto(pro_id)
+);
